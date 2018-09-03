@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Properties list</h1>
+    {#<h1>Properties list</h1>
 
     <table>
         <thead>
@@ -43,5 +43,45 @@
         <li>
             <a href="{{ path('_new') }}">Create a new property</a>
         </li>
-    </ul>
+    </ul>#}
+    <div class="container">
+        <div class="row">
+            <h1 class="col-3 text-warning">Properties</h1>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Keys</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Pricing</th>
+                        <th>Rooms</th>
+                        <th>Max Guests</th>
+                        <th href="{{ path('_new') }}"><a href="{{ path('_new') }}">new</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% set i = 0 %}
+                {% for property in properties %}
+                    {% set i = i+1 %}
+                    <tr>
+                        <td>{{ i }}</td>
+                        <td><a href="{{ path('_show', { 'id': property.id }) }}">{{ property.id }}</a></td>
+                        <td>{{ property.name }}</td>
+                        <td>{{ property.location }}</td>
+                        <td>{{ property.price }}</td>
+                        <td>{{ property.rooms }}</td>
+                        <td>{{ property.maxgests }}</td>
+                        <td>
+                            <a href="{{ path('_delete', { 'id': property.id }) }}">delete</a>
+                            <a href="{{ path('_edit', { 'id': property.id }) }}">edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
