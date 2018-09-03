@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Properties list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Rooms</th>
+                <th>Maxgests</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for property in properties %}
+            <tr>
+                <td><a href="{{ path('_show', { 'id': property.id }) }}">{{ property.id }}</a></td>
+                <td>{{ property.name }}</td>
+                <td>{{ property.location }}</td>
+                <td>{{ property.price }}</td>
+                <td>{{ property.rooms }}</td>
+                <td>{{ property.maxgests }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('_show', { 'id': property.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('_edit', { 'id': property.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('_new') }}">Create a new property</a>
+        </li>
+    </ul>
+{% endblock %}
