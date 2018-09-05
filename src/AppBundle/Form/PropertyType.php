@@ -13,7 +13,11 @@ class PropertyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('location')->add('price')->add('rooms')->add('maxgests');
+        $builder->add('name')
+                ->add('location')
+                ->add('price')
+                ->add('rooms')
+                ->add('maxgests');
     }/**
      * {@inheritdoc}
      */

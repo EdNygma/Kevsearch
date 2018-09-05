@@ -16,7 +16,7 @@
                         <th>Pricing</th>
                         <th>Rooms</th>
                         <th>Max Guests</th>
-                        <th href="{{ path('_new') }}"><a href="{{ path('_new') }}">new</a></th>
+                        <th href="{{ path('_new') }}"><a href="{{ path('_new') }}"><button class="btn btn-success"><i class="fas fa-plus-square"></i></button></a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,15 +25,17 @@
                     {% set i = i+1 %}
                     <tr>
                         <td>{{ i }}</td>
-                        <td><a href="{{ path('_show', { 'id': property.id }) }}">{{ property.id }}</a></td>
-                        <td>{{ property.name }}</td>
+                        <td></td>
+                        <td><a href="{{ path('_show', { 'id': property.id }) }}">{{ property.name }}</a></td>
                         <td>{{ property.location }}</td>
-                        <td>{{ property.price }}</td>
+                        <td>{{ property.price }} £/ Night</td>
                         <td>{{ property.rooms }}</td>
                         <td>{{ property.maxgests }}</td>
                         <td>
-                            <a href="{{ path('_delete', { 'id': property.id }) }}">delete</a>
-                            <a href="{{ path('_edit', { 'id': property.id }) }}">edit</a>
+                            <a href="{{ path('_delete', { 'id': property.id }) }}"><button type="button" class="btn btn-warning"><i class="fas fa-trash-alt"></i></button></a>
+                            <a href="{{ path('_edit', { 'id': property.id }) }}"><button type="button" class="btn btn-danger"><i class="far fa-edit"></i>
+
+                                </button></a>
                         </td>
                     </tr>
                 {% endfor %}
